@@ -8,9 +8,10 @@ $ = require('jQuery');
 
 
 var formData = [{
-	 name: "bert muppet",
-	 email: "ernieismybud@gmail.com"
+	 name: "oj simpson",
+	 email: "wasntMe@gmail.com"
 	}
+	
 	];
 
 
@@ -18,8 +19,6 @@ var formData = [{
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-
 
 app.use(function(req,res,next){
 	console.log(`${req.method} request for '${req.url}' - ${JSON.stringify(req.body)}`);
@@ -35,7 +34,7 @@ app.use(cors());
   
 app.get("/", function(req, res) {
 	res.sendFile(__dirname + '/client/views/index.html');
-	
+
 
 
 
@@ -45,13 +44,13 @@ app.get("/bunki-input", function(req, res) {
 	
 	res.sendFile(__dirname + '/client/views/bunki-input.html')
 	//formData.push(req.body);
-	//res.json(formData)
+	res.json(formData)
 });
 
 
 app.post("/bunki-input", function(req, res) {
-//formData.push(req.body);
-//document.write(insertInfo);
+formData.push(req.body);
+res.json(formData);
 
 });
 
